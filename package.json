@@ -1,0 +1,34 @@
+{
+  "name": "FEC-main-photo-module",
+  "version": "",
+  "description": "main-photo module for FEC project ReBurke",
+  "author": "Steven Walker",
+  "license": "",
+  "engines": {
+    "node": ">=6.13.0"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "start:dev": "nodemon server/index.js",
+    "build": "webpack --mode production",
+    "build:dev": "webpack -d --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "express": "^4.17.1",
+    "jquery": "^3.5.1",
+    "mongoose": "^5.9.27",
+    "nodemon": "^2.0.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+  }
+}
