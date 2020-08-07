@@ -11,6 +11,5 @@ let Images = mongoose.model('Images', imagesSchema);
 
 let dropDatabase =  () => mongoose.connection.dropDatabase();
 
-
 module.exports.Images = Images;
 module.exports.dropDatabase = dropDatabase;
