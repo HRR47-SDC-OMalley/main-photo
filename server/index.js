@@ -5,7 +5,13 @@ const db = require('../db/index.js')
 
 app.use(express.static(__dirname + '/../public/dist'))
 
-
+//NEW
+// app.get('/api/images', (req, res) => {
+//   db.retrieveListingImages(2, (results) => {
+//       res.json(results);
+//   });
+//   // res.end();
+// });
 
 
 app.listen(port, function () {
