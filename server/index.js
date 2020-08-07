@@ -1,15 +1,17 @@
 const express = require('express');
+
 const app = express();
-const port = process.env.PORT || 3001;
+const path = require('path');
 const db = require('../db/index.js');
 
-app.use(express.static(__dirname + '/../public/dist'))
-
+const port = process.env.PORT || 3001;
+console.log(path.join(__dirname, '/../public/dist'));
+app.use(express.static(path.join(__dirname, '/../public/dist')));
 
 app.get('/item', (req, res) => {
-  let itemId = req.query.id;
+  const itemId = req.query.id;
   db.retrieveListingImages(itemId, (results) => {
-      res.json(results);
+    res.json(results);
   });
 });
 
@@ -17,4 +19,3 @@ app.get('/item', (req, res) => {
 app.listen(port, function () {
  console.log('Listening ' + port);
 });
-
