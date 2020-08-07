@@ -6,12 +6,11 @@ const db = require('../db/index.js');
 app.use(express.static(__dirname + '/../public/dist'))
 
 
-app.get('/api/images', (req, res) => {
-  console.log(req.body);
-  db.retrieveListingImages(2, (results) => {
+app.get('/item', (req, res) => {
+  let itemId = req.query.id;
+  db.retrieveListingImages(itemId, (results) => {
       res.json(results);
   });
-  // res.end();
 });
 
 

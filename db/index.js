@@ -18,6 +18,11 @@ let retrieveListingImages = (listingId, callback) => {
   let constURL = "https://acoustic-guitar-images.s3.us-east-2.amazonaws.com/";
   Images.find({listing_id: listingId}).exec((err, results) => {
     if (err) {return err}
+    results = results.map((image) => {
+      var urlEnd = image.url;
+      image.url = constURL + urlEnd;
+      return image;
+    });
     callback(results);
   });
 }
