@@ -5,7 +5,7 @@ const db = require('../db/index.js')
 
 app.use(express.static(__dirname + '/../public/dist'))
 
-db.generateDB();
+
 
 
 app.listen(port, function () {
