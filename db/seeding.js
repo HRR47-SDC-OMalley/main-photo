@@ -1,6 +1,4 @@
-const db = require('./index.js')
-
-// let constURL = "https://acoustic-guitar-images.s3.us-east-2.amazonaws.com/"
+const db = require('./index.js');
 
 const generateDB = () => {
   db.dropDatabase();
@@ -27,3 +25,5 @@ const generateDB = () => {
 };
 
 generateDB();
+
+module.exports.generateDB = generateDB;
