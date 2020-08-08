@@ -6,8 +6,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainImage: {},
-      images: [],
+      mainImage: 'item',
+      images: 'images',
     };
   }
 
@@ -19,7 +19,7 @@ class App extends React.Component {
         this.setState({
           mainImage: data[0].url,
           images: data,
-        }, () => console.log(this.state.images));
+        });
       },
     });
   }
@@ -27,8 +27,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <img src={this.state.mainImage}></img>
-        <div>ReBurke</div>
+        <img src={this.state.mainImage} alt='Cool, right?'></img>
       </div>
     );
   }
