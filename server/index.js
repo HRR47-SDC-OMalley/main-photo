@@ -4,18 +4,17 @@ const app = express();
 const path = require('path');
 const db = require('../db/index.js');
 
-const port = process.env.PORT || 3001;
-console.log(path.join(__dirname, '/../public/dist'));
 app.use(express.static(path.join(__dirname, '/../public/dist')));
 
 app.get('/item', (req, res) => {
-  const itemId = req.query.id;
+  const itemId = req.query.id || 1;
   db.retrieveListingImages(itemId, (results) => {
     res.json(results);
   });
 });
 
+const port = process.env.PORT || 3001;
 
-app.listen(port, function () {
- console.log('Listening ' + port);
+app.listen(port, () => {
+  console.log('Listening ' + port);
 });
