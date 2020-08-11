@@ -7,7 +7,7 @@ const db = require('../db/index.js');
 app.use(express.static(path.join(__dirname, '/../public/dist')));
 
 app.get('/item', (req, res) => {
-  const itemId = req.query.id || 62;
+  const itemId = req.query.id || 20;
   db.retrieveListingImages(itemId, (results) => {
     res.json(results);
   });
