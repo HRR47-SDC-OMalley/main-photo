@@ -89,9 +89,3 @@ export const Thumbnails = styled.img`
     opacity: .70;
   }
 `;
-
-export const ImageBooth = styled.div`
-  background-color: black;
-  width: auto;
-  height: auto;
-`;

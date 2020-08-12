@@ -1,8 +1,9 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import $ from 'jquery';
+import ImageModal from './components/imagemodal.jsx';
 import {
-  Body, Next, Previous, PrimaryWrapper, Primary, FootWrapper, Thumbnails, ImageBooth,
+  Body, Next, Previous, PrimaryWrapper, Primary, FootWrapper, Thumbnails,
 } from './styled.jsx';
 
 class App extends React.Component {
@@ -93,9 +94,11 @@ class App extends React.Component {
     const { images, mainImage, boothView } = this.state;
     if (boothView) {
       return (
-        <ImageBooth>
-          <Primary src={mainImage.url} />
-        </ImageBooth>
+        <ImageModal
+          mainImage={mainImage}
+          images={images}
+          renderImageBooth={this.renderImageBooth}
+        />
       );
     }
     return (
