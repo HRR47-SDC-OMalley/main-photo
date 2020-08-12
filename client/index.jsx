@@ -1,5 +1,5 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
+import React from 'react';
 import $ from 'jquery';
 import styled from 'styled-components';
 
@@ -15,6 +15,7 @@ const Body = styled.div`
 
 const Next = styled.button`
   border: none;
+  outline: none;
   width: 50px;
   border-radius: 60%;
   position: fixed;
@@ -25,7 +26,6 @@ const Next = styled.button`
   transition: opacity .2s,right .2s,left .2s;
   :hover {
     cursor: pointer;
-    /* background: transparent 50% no-repeat; */
     opacity: .9;
     background-color: white;
   }
@@ -33,6 +33,7 @@ const Next = styled.button`
 
 const Previous = styled.button`
   border: none;
+  outline: none;
   width: 50px;
   border-radius: 60%;
   position: fixed;
@@ -77,8 +78,8 @@ const FootWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   border: 1px solid rgb(211,211,211);
+  border-style: solid none solid none;
   overflow: auto;
-  /* white-space: nowrap; */
 `;
 
 const Thumbnails = styled.img`
@@ -101,6 +102,9 @@ class App extends React.Component {
       mainImage: 'item',
       images: [],
     };
+    this.thumbClick = this.thumbClick.bind(this);
+    this.prevImage = this.prevImage.bind(this);
+    this.nextImage = this.nextImage.bind(this);
   }
 
   componentDidMount() {
@@ -108,7 +112,6 @@ class App extends React.Component {
       url: '/item',
       type: 'GET',
       success: (data) => {
-        console.log(data);
         this.setState({
           mainImage: data[0],
           images: data,
@@ -117,11 +120,55 @@ class App extends React.Component {
     });
   }
 
+  nextImage() {
+    const { images, mainImage } = this.state;
+    const lastId = images[images.length - 1]._id;
+    // console.log(mainImage);
+    if (mainImage._id === lastId) {
+      return this.setState({
+        mainImage: images[0],
+      });
+    }
+    let next;
+    images.forEach((image) => {
+      if (image._id === mainImage._id + 1) {
+        next = image;
+      }
+    });
+    return this.setState({
+      mainImage: next,
+    });
+  }
+
+  prevImage() {
+    const { images, mainImage } = this.state;
+    const firstId = images[0]._id;
+    if (mainImage._id === firstId) {
+      return this.setState({
+        mainImage: images[images.length - 1],
+      });
+    }
+    let next;
+    images.forEach((image) => {
+      if (image._id === mainImage._id - 1) {
+        next = image;
+      }
+    });
+    return this.setState({
+      mainImage: next,
+    });
+  }
+
   thumbClick(e) {
+    let newMain;
+    const { images } = this.state;
+    images.forEach((image) => {
+      if (image.url === e.target.src) {
+        newMain = image;
+      }
+    });
     this.setState({
-      mainImage: {
-        url: e.target.src,
-      },
+      mainImage: newMain,
     });
   }
 
@@ -130,19 +177,33 @@ class App extends React.Component {
     return (
       <Body>
         <PrimaryWrapper>
-          <Next><img src="data:image/svg+xml;charset=utf8,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 16 36' width='16px' height='36px' preserveAspectRatio='defer' shape-rendering='geometricPrecision'%3E%3Cg fill='%23414141'%3E%3Cpath d='M2,31.55A1.5,1.5,0,0,1,.92,29l11-11L.92,7A1.5,1.5,0,0,1,3,4.9l12,12a1.5,1.5,0,0,1,0,2.12l-12,12A1.5,1.5,0,0,1,2,31.55Z'/%3E%3C/g%3E%3C/svg%3E"></img></Next>
+          <Next onClick={this.nextImage}><img src="data:image/svg+xml;charset=utf8,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 16 36' width='16px' height='36px' preserveAspectRatio='defer' shape-rendering='geometricPrecision'%3E%3Cg fill='%23414141'%3E%3Cpath d='M2,31.55A1.5,1.5,0,0,1,.92,29l11-11L.92,7A1.5,1.5,0,0,1,3,4.9l12,12a1.5,1.5,0,0,1,0,2.12l-12,12A1.5,1.5,0,0,1,2,31.55Z'/%3E%3C/g%3E%3C/svg%3E" alt="right-arrow" /></Next>
           <Primary src={mainImage.url} />
-          <Previous><img src="data:image/svg+xml;charset=utf8,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 16 36' width='16px' height='36px' preserveAspectRatio='defer' shape-rendering='geometricPrecision'%3E%3Cg fill='%23414141'%3E%3Cpath d='M14,31.54A1.5,1.5,0,0,1,13,31.1l-12-12a1.5,1.5,0,0,1,0-2.12l12-12A1.5,1.5,0,0,1,15.08,7L4.1,18l11,11A1.5,1.5,0,0,1,14,31.54Z'/%3E%3C/g%3E%3C/svg%3E"></img></Previous>
+          <Previous onClick={this.prevImage}><img src="data:image/svg+xml;charset=utf8,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 16 36' width='16px' height='36px' preserveAspectRatio='defer' shape-rendering='geometricPrecision'%3E%3Cg fill='%23414141'%3E%3Cpath d='M14,31.54A1.5,1.5,0,0,1,13,31.1l-12-12a1.5,1.5,0,0,1,0-2.12l12-12A1.5,1.5,0,0,1,15.08,7L4.1,18l11,11A1.5,1.5,0,0,1,14,31.54Z'/%3E%3C/g%3E%3C/svg%3E" alt="left-arrow" /></Previous>
         </PrimaryWrapper>
         <FootWrapper>
           {
-            images.map((image) => (
-              <Thumbnails onClick={this.thumbClick.bind(this)}
-                key={image._id}
-                src={image.url}
-              />
-            ))
-          }
+            images.map((image) => {
+              if (mainImage.url === image.url) {
+                return (
+                  <Thumbnails
+                    key={image._id}
+                    src={image.url}
+                    style={{
+                      opacity: '1',
+                    }}
+                  />
+                );
+              }
+              return (
+                <Thumbnails
+                  onClick={this.thumbClick}
+                  key={image._id}
+                  src={image.url}
+                />
+              );
+            })
+        }
         </FootWrapper>
       </Body>
     );
