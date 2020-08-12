@@ -3,6 +3,21 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
+      "name": "FEC:db/seeding.generateDB (nodejs10.x)",
+      "invokeTarget": {
+        "target": "code",
+        "projectRoot": "",
+        "lambdaHandler": "db/seeding.generateDB"
+      },
+      "lambda": {
+        "runtime": "nodejs10.x",
+        "payload": {},
+        "environmentVariables": {}
+      }
+    },
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
       "name": "FEC:db/index.retrieveListingImages (nodejs10.x)",
       "invokeTarget": {
         "target": "code",
