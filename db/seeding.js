@@ -5,22 +5,22 @@ const generateDB = () => {
   let id = 1;
   let listingId = 1;
   let count = 0;
-  let imageCounts = [5, 6, 7, 8];
+  const imageCounts = [5, 6, 7, 8];
   const randomSort = () => Math.floor(Math.random() * imageCounts.length);
   let index = randomSort();
-  for (let i = 1; i < 501; i++) {
+  for (let i = 1; i < 501; i += 1) {
     if (count === imageCounts[index]) {
-      listingId++;
+      listingId += 1;
       index = randomSort();
       count = 0;
     }
     db.Images.create({
-      _id: id,
+      id,
       url: `ac-guit${i}.jpeg`,
       listing_id: listingId,
     });
-    count++;
-    id++;
+    count += 1;
+    id += 1;
   }
 };
 
