@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import $ from 'jquery';
-import ImageModal from './components/imagemodal.jsx';
+import ImagesModal from './components/ImagesModal.jsx';
 import {
   Body, Next, Previous, PrimaryWrapper, Primary, FootWrapper, Thumbnails,
 } from './styled.jsx';
@@ -85,8 +85,9 @@ class App extends React.Component {
   }
 
   renderImageBooth() {
+    const { boothView } = this.state;
     this.setState({
-      boothView: !this.state.boothView,
+      boothView: !boothView,
     });
   }
 
@@ -94,7 +95,7 @@ class App extends React.Component {
     const { images, mainImage, boothView } = this.state;
     if (boothView) {
       return (
-        <ImageModal
+        <ImagesModal
           mainImage={mainImage}
           images={images}
           renderImageBooth={this.renderImageBooth}
@@ -138,3 +139,5 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+export default App;

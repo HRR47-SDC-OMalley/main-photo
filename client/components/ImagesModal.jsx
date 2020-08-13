@@ -2,29 +2,29 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ImageBooth = styled.div`
-   background-color: black;
-   position: fixed;
-   width: 100%;
-   height: 100%;
-   margin: 0;
-   padding: 0;
-   overflow-x: hidden;
+  background-color: black;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
  `;
 
 const Next = styled.button`
-border: none;
-outline: none;
-position: fixed;
-background: none;
-top: 50%;
-right: 2%;
-opacity: .5;
-transition: opacity .2s;
-:hover {
-  cursor: pointer;
-  opacity: .9;
-}
+  border: none;
+  outline: none;
+  position: fixed;
+  background: none;
+  top: 50%;
+  right: 2%;
+  opacity: .5;
+  transition: opacity .2s;
+  :hover {
+    cursor: pointer;
+    opacity: .9;
+  }
 `;
 
 const Previous = styled.button`
@@ -43,10 +43,10 @@ const Previous = styled.button`
 `;
 
 const PrimaryWrapper = styled.div`
- display: flex;
- width: auto;
- height: 600px;
- text-align: center;
+  display: flex;
+  width: auto;
+  height: 600px;
+  text-align: center;
 `;
 
 const Primary = styled.img`
@@ -96,7 +96,7 @@ const ExitModal = styled.button`
   }
 `;
 
-class ImageModal extends React.Component {
+class ImagesModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -161,6 +161,7 @@ class ImageModal extends React.Component {
 
   render() {
     const { mainImage, images } = this.state;
+    const { renderImageBooth } = this.props;
     return (
       <ImageBooth>
         <Previous onClick={this.prevImage}><img src="data:image/svg+xml;charset=utf8,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 16 36' width='16px' height='36px' preserveAspectRatio='defer' shape-rendering='geometricPrecision'%3E%3Cg fill='%23fff'%3E%3Cpath d='M14,31.54A1.5,1.5,0,0,1,13,31.1l-12-12a1.5,1.5,0,0,1,0-2.12l12-12A1.5,1.5,0,0,1,15.08,7L4.1,18l11,11A1.5,1.5,0,0,1,14,31.54Z'/%3E%3C/g%3E%3C/svg%3E" alt="left-arrow" /></Previous>
@@ -192,10 +193,10 @@ class ImageModal extends React.Component {
             })
         }
         </FootWrapper>
-        <ExitModal onClick={this.props.renderImageBooth}><img src="data:image/svg+xml;charset=utf8,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 36 36' width='36px' height='36px' preserveAspectRatio='defer' shape-rendering='geometricPrecision'%3E%3Cg fill='white'%3E%3Cpath d='M19.81,18h0l11-11A1.5,1.5,0,1,0,28.67,4.9L18,15.56,7.33,4.9A1.5,1.5,0,0,0,5.21,7l11,11h0l-11,11A1.5,1.5,0,1,0,7.33,31.1L18,20.44,28.67,31.1A1.5,1.5,0,0,0,30.79,29Z'/%3E%3C/g%3E%3C/svg%3E" alt="close" /></ExitModal>
+        <ExitModal onClick={renderImageBooth}><img src="data:image/svg+xml;charset=utf8,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 36 36' width='36px' height='36px' preserveAspectRatio='defer' shape-rendering='geometricPrecision'%3E%3Cg fill='white'%3E%3Cpath d='M19.81,18h0l11-11A1.5,1.5,0,1,0,28.67,4.9L18,15.56,7.33,4.9A1.5,1.5,0,0,0,5.21,7l11,11h0l-11,11A1.5,1.5,0,1,0,7.33,31.1L18,20.44,28.67,31.1A1.5,1.5,0,0,0,30.79,29Z'/%3E%3C/g%3E%3C/svg%3E" alt="close" /></ExitModal>
       </ImageBooth>
     );
   }
 }
 
-export default ImageModal;
+export default ImagesModal;
