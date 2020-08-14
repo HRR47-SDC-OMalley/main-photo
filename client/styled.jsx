@@ -18,7 +18,7 @@ export const Next = styled.button`
   top: 40%;
   opacity: .5;
   transform: translateY(-50%);
-  transition: opacity .2s,right .2s,left .2s;
+  transition: opacity .2s,right .25s,left .25s;
   background-color: white;
   :hover {
     cursor: pointer;
@@ -36,7 +36,7 @@ export const Previous = styled.button`
   top: 40%;
   opacity: .5;
   transform: translateY(-50%);
-  transition: opacity .2s,right .2s,left .2s;
+  transition: opacity .2s,right .25s,left .25s;
   background-color: white;
   :hover {
     cursor: pointer;
@@ -73,7 +73,7 @@ export const FootWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   border: 1px solid rgb(211,211,211);
-  border-style: solid none solid none;
+  /* border-style: none none none none; */
   overflow: auto;
 `;
 
@@ -84,6 +84,7 @@ export const Thumbnails = styled.img`
   height: 60px;
   margin: 10px;
   opacity: 50%;
+  transition: opacity .2s;
   cursor: pointer;
   :hover {
     opacity: .70;

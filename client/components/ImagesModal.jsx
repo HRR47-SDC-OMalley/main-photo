@@ -17,7 +17,7 @@ const Next = styled.button`
   outline: none;
   position: fixed;
   background: none;
-  top: 50%;
+  top: 40%;
   right: 2%;
   opacity: .5;
   transition: opacity .2s;
@@ -32,7 +32,7 @@ const Previous = styled.button`
   outline: none;
   position: fixed;
   background: none;
-  top: 50%;
+  top: 40%;
   left: 2%;
   opacity: .5;
   transition: opacity .2s;
@@ -74,6 +74,7 @@ const Thumbnails = styled.img`
   height: 60px;
   margin: 10px;
   opacity: 50%;
+  transition: opacity .2s;
   cursor: pointer;
   :hover {
     opacity: .70;
