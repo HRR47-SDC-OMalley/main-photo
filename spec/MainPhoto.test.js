@@ -3,12 +3,12 @@ import { configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import images from './__mocks__/imagesMock.js';
-import App from '../client/index.jsx';
+import MainPhoto from '../client/index.jsx';
 
 configure({ adapter: new Adapter() });
 
-describe('App', () => {
-  const component = mount(<App />);
+describe('MainPhoto', () => {
+  const component = mount(<MainPhoto />);
   component.state().images = images;
   component.state().mainImage = images[0];
   const componentRendered = component.render().toString();

@@ -73,7 +73,6 @@ export const FootWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   border: 1px solid rgb(211,211,211);
-  /* border-style: none none none none; */
   overflow: auto;
 `;
 

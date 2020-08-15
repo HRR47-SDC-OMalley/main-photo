@@ -5,8 +5,10 @@ import ImagesModal from './components/ImagesModal.jsx';
 import {
   Body, Next, Previous, PrimaryWrapper, Primary, FootWrapper, Thumbnails,
 } from './styled.jsx';
+const ORIGIN = document.location.origin;
+const PATH = document.location.pathname.slice(1);
 
-class App extends React.Component {
+class MainPhoto extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +24,7 @@ class App extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: '/item',
+      url: `${ORIGIN}/api/${PATH}`,
       type: 'GET',
       success: (data) => {
         this.setState({
@@ -138,6 +140,6 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<MainPhoto />, document.getElementById('main-photo'));
 
-export default App;
+export default MainPhoto;
