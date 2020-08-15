@@ -1,11 +1,14 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import $ from 'jquery';
+import ImagesModal from './components/ImagesModal.jsx';
 import {
-  Body, Next, Previous, PrimaryWrapper, Primary, FootWrapper, Thumbnails, ImageBooth,
+  Body, Next, Previous, PrimaryWrapper, Primary, FootWrapper, Thumbnails,
 } from './styled.jsx';
+const ORIGIN = document.location.origin;
+const PATH = document.location.pathname.slice(1);
 
-class App extends React.Component {
+class MainPhoto extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +24,7 @@ class App extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: '/item',
+      url: `${ORIGIN}/api/${PATH}`,
       type: 'GET',
       success: (data) => {
         this.setState({
@@ -84,8 +87,9 @@ class App extends React.Component {
   }
 
   renderImageBooth() {
+    const { boothView } = this.state;
     this.setState({
-      boothView: !this.state.boothView,
+      boothView: !boothView,
     });
   }
 
@@ -93,9 +97,11 @@ class App extends React.Component {
     const { images, mainImage, boothView } = this.state;
     if (boothView) {
       return (
-        <ImageBooth>
-          <Primary src={mainImage.url} />
-        </ImageBooth>
+        <ImagesModal
+          mainImage={mainImage}
+          images={images}
+          renderImageBooth={this.renderImageBooth}
+        />
       );
     }
     return (
@@ -134,4 +140,6 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<MainPhoto />, document.getElementById('main-photo'));
+
+export default MainPhoto;

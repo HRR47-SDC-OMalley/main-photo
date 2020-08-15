@@ -5,9 +5,12 @@ const path = require('path');
 const db = require('../db/index.js');
 
 app.use(express.static(path.join(__dirname, '/../public/dist')));
+app.use('/item/:id', express.static(path.resolve(__dirname, './../public/dist')));
 
-app.get('/item', (req, res) => {
-  const itemId = req.query.id || Math.floor(Math.random() * 50) || 36;
+//need to fix id retrieval
+
+app.get('/api/item/:id', (req, res) => {
+  const itemId = req.params.id;
   db.retrieveListingImages(itemId, (results) => {
     res.json(results);
   });
