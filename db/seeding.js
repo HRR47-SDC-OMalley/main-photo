@@ -8,7 +8,7 @@ const generateDB = () => {
   const imageCounts = [5, 6, 7, 8];
   const randomSort = () => Math.floor(Math.random() * imageCounts.length);
   let index = randomSort();
-  for (let i = 1; i < 501; i += 1) {
+  for (let i = 1; i < 1000; i += 1) {
     if (count === imageCounts[index]) {
       listingId += 1;
       index = randomSort();
@@ -16,7 +16,7 @@ const generateDB = () => {
     }
     db.Images.create({
       id,
-      url: `ac-guit${i}.jpeg`,
+      url: `acguit${i}.jpeg`,
       listing_id: listingId,
     });
     count += 1;
