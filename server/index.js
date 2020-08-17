@@ -4,10 +4,13 @@ const app = express();
 const path = require('path');
 const db = require('../db/index.js');
 
+app.use('/', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 app.use(express.static(path.join(__dirname, '/../public/dist')));
 app.use('/item/:id', express.static(path.resolve(__dirname, './../public/dist')));
-
-//need to fix id retrieval
 
 app.get('/api/item/:id', (req, res) => {
   const itemId = req.params.id;

@@ -8,6 +8,7 @@ const ImageBooth = styled.div`
   height: 100%;
   margin: 0;
   padding: 0;
+  z-index: 10000;
   overflow-x: hidden;
 }
  `;
@@ -19,6 +20,7 @@ const Next = styled.button`
   background: none;
   top: 40%;
   right: 2%;
+  z-index: 10005;
   opacity: .5;
   transition: opacity .2s;
   :hover {
@@ -32,6 +34,7 @@ const Previous = styled.button`
   outline: none;
   position: fixed;
   background: none;
+  z-index: 10005;
   top: 40%;
   left: 2%;
   opacity: .5;
@@ -54,6 +57,7 @@ const Primary = styled.img`
   padding-top: 50px;
   margin: auto;
   width: auto;
+  z-index: 10001;
   max-width: 100%;
   max-height: 600px;
   min-height: 500px;
@@ -63,17 +67,21 @@ const Primary = styled.img`
 const FootWrapper = styled.div`
   display: block;
   position: relative;
+  z-index: 10001;
   text-align: center;
   top: 8%;
+  bottom: .1%;
   overflow: auto;
 `;
 
 const Thumbnails = styled.img`
+  position: relative;
+  z-index: 10002;
   object-fit: cover;
   width: 60px;
   height: 60px;
-  margin: 10px;
-  opacity: 50%;
+  margin: 6px;
+  opacity: .5;
   transition: opacity .2s;
   cursor: pointer;
   :hover {
@@ -88,6 +96,7 @@ const ExitModal = styled.button`
   background: none;
   top: 2%;
   right: 2%;
+  z-index: 10001;
   transition: opacity .2s;
   -webkit-tap-highlight-color: transparent;
   opacity: .5;

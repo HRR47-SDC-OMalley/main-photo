@@ -13,16 +13,16 @@ export const Next = styled.button`
   outline: none;
   width: 45px;
   border-radius: 60%;
-  position: fixed;
-  right: -10%;
+  position: absolute;
+  right: -4%;
   top: 40%;
-  opacity: .5;
+  opacity: 0;
   transform: translateY(-50%);
   transition: opacity .2s,right .25s,left .25s;
   background-color: white;
   :hover {
     cursor: pointer;
-    opacity: .9;
+    opacity: .9 !important;
   }
 `;
 
@@ -31,16 +31,16 @@ export const Previous = styled.button`
   outline: none;
   width: 45px;
   border-radius: 60%;
-  position: fixed;
-  left: -10%;
+  position: absolute;
+  left: -4%;
   top: 40%;
-  opacity: .5;
+  opacity: 0;
   transform: translateY(-50%);
   transition: opacity .2s,right .25s,left .25s;
   background-color: white;
   :hover {
     cursor: pointer;
-    opacity: .9;
+    opacity: .9 !important;
   }
 `;
 
@@ -51,9 +51,11 @@ export const PrimaryWrapper = styled.div`
   cursor: zoom-in;
   text-align: center;
   &:hover ${Next} {
+    opacity: .5;
     right: 4%;
   }
   &:hover ${Previous} {
+    opacity: .5;
     left: 4%;
   }
 `;
@@ -72,7 +74,7 @@ export const FootWrapper = styled.div`
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid rgb(211,211,211);
+  border-top: 1px solid rgb(211,211,211);
   overflow: auto;
 `;
 
@@ -81,7 +83,7 @@ export const Thumbnails = styled.img`
   object-fit: cover;
   width: 60px;
   height: 60px;
-  margin: 10px;
+  margin: 6px;
   opacity: 50%;
   transition: opacity .2s;
   cursor: pointer;
