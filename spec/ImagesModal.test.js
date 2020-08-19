@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable no-undef */
 import React from 'react';
 import { configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -8,10 +10,9 @@ import ImagesModal from '../client/components/ImagesModal.jsx';
 configure({ adapter: new Adapter() });
 
 describe('ImagesModal', () => {
+  // eslint-disable-next-line react/jsx-filename-extension
   const component = mount(<ImagesModal images={images} mainImage={images[0]} />);
   const componentRendered = component.render().toString();
-
-  // console.log(component.find('Next').simulate('click'));
 
   test('Retrieves all mock images', (done) => {
     const count = images.length;

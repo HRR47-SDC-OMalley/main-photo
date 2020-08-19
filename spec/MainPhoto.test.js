@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable no-undef */
+/* eslint-disable import/extensions */
 import React from 'react';
 import { configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -11,7 +14,6 @@ describe('MainPhoto', () => {
   const component = mount(<MainPhoto />);
   component.state().images = images;
   component.state().mainImage = images[0];
-  const componentRendered = component.render().toString();
 
   test('Retrieves all mock images', (done) => {
     const count = images.length;
