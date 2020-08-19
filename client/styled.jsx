@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
 export const Body = styled.div`
+  position: relative;
   background-color:white;
   border: 1px solid rgb(211,211,211);
   overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
   width: auto;
+  max-width: 700px;
   height: auto;
 `;
 

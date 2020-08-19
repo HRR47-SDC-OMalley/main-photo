@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable import/extensions */
 import ReactDOM from 'react-dom';
 import React from 'react';
 import $ from 'jquery';
