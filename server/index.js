@@ -12,7 +12,7 @@ app.use('/', (req, res, next) => {
 app.use(express.static(path.join(__dirname, '/../public/dist')));
 app.use('/item/:id', express.static(path.resolve(__dirname, './../public/dist')));
 
-app.get('/api/item/:id', (req, res) => {
+app.get('*/photo/api/item/:id', (req, res) => {
   const itemId = req.params.id;
   db.retrieveListingImages(itemId, (results) => {
     res.json(results);
