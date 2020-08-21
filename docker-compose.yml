@@ -1,0 +1,35 @@
+
+version: "3.7"
+
+services:
+  main-photo:
+    build: .
+    image: node:12-alpine
+    command: sh -c "npm install && npm run build"
+    ports:
+      - "80:3001"
+    working_dir: /main-photo
+    environment:
+      DBURL: mongodb://mongo:27017/listing_images
+    volumes:
+      - ./:/main-photo
+    networks:
+      - photo
+    restart: always
+    command: sh -c "npm run seed && npm run start:dev"
+  mongo:
+    image: mongo:4.2.8
+    volumes:
+      - mongodb:/data/db
+    restart: always
+    networks:
+      - photo
+    command: mongod
+
+volumes:
+  mongodb:
+
+networks:
+  photo:
+    driver: bridge
+

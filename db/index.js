@@ -1,9 +1,15 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/listing_images', {
+mongoose.Promise = Promise;
+
+mongoose.connect(process.env.DBURL || 'mongodb://localhost/listing_images', {
   useUnifiedTopology: true,
   useNewUrlParser: true,
-});
+  useFindAndModify: false,
+  useCreateIndex: true,
+  connectTimeoutMS: 10000,
+})
+  .catch((err) => { throw new Error(err); });
 
 const imagesSchema = mongoose.Schema({
   id: Number,

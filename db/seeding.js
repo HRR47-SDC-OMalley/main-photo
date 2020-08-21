@@ -18,6 +18,10 @@ const generateDB = () => {
       id,
       url: `acguit${i}.jpeg`,
       listing_id: listingId,
+    }, () => {
+      if (i === 999) {
+        process.exit();
+      }
     });
     count += 1;
     id += 1;
