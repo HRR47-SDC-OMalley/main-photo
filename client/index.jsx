@@ -7,7 +7,7 @@ import ImagesModal from './components/ImagesModal.jsx';
 import {
   Body, Next, Previous, PrimaryWrapper, Primary, FootWrapper, Thumbnails,
 } from './styled.jsx';
-// const ORIGIN = 'http://localhost:3001';
+
 const PATH = document.location.pathname.slice(1);
 
 class MainPhoto extends React.Component {

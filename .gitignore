@@ -23,3 +23,6 @@ coverage
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
 public/dist/bundle.js
+
+# AWS access
+aws-access.json
