@@ -26,7 +26,7 @@ class MainPhoto extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: `/photo/api/${PATH}`,
+      url: `*/photo/api/${PATH}`,
       type: 'GET',
       success: (data) => {
         this.setState({
