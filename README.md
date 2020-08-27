@@ -21,6 +21,13 @@
   - Example URL: http://localhost:3001/item/50
   - Items range from 1-99
 
+## Crud
+All requests made to '/photo/api/item/:id'
+Create: POST - req body must contain 'url' field.
+Read: GET - no req body required.
+Update: PUT - req body must contain a 'id' and 'url' fields. Product with id will be updated.
+Delete: DELETE - req body must contain 'id' field. Product with id will be deleted.
+
 ## Requirements
 
 - Node.js v14.3.0
