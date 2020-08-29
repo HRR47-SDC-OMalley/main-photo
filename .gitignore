@@ -26,3 +26,6 @@ public/dist/bundle.js
 
 # AWS access
 aws-access.json
+
+# Pexels config
+pexels.config.js
