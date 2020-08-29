@@ -35,19 +35,20 @@
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
+    "@shelf/jest-mongodb": "^1.2.2",
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
-    "jest": "^26.4.0",
-    "react-test-renderer": "^16.13.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.5.0",
     "eslint": "^7.6.0",
     "eslint-config-airbnb": "^18.2.0",
-    "@shelf/jest-mongodb": "^1.2.2",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.5"
+    "eslint-plugin-react": "^7.20.5",
+    "jest": "^26.4.0",
+    "pexels": "^1.0.1",
+    "react-test-renderer": "^16.13.1"
   }
 }
