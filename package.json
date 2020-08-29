@@ -38,6 +38,7 @@
     "@shelf/jest-mongodb": "^1.2.2",
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
+    "csv-write-stream": "^2.0.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.5.0",
