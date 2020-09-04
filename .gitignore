@@ -32,3 +32,4 @@ pexels.config.js
 
 # data file
 db/data.csv
+db/test_data.csv
