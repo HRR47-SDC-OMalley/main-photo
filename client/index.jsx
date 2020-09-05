@@ -1,3 +1,4 @@
+
 /* eslint-disable no-undef */
 /* eslint-disable import/extensions */
 import ReactDOM from 'react-dom';
@@ -17,6 +18,7 @@ class MainPhoto extends React.Component {
       mainImage: 'item',
       images: [],
       boothView: false,
+      mainImageIdx: 0,
     };
     this.thumbClick = this.thumbClick.bind(this);
     this.prevImage = this.prevImage.bind(this);
@@ -37,41 +39,61 @@ class MainPhoto extends React.Component {
     });
   }
 
+  // nextImage() {
+  //   const { images, mainImage } = this.state;
+  //   const lastId = images[images.length - 1].id;
+  //   if (mainImage.id === lastId) {
+  //     return this.setState({
+  //       mainImage: images[0],
+  //     });
+  //   }
+  //   let next;
+  //   images.forEach((image) => {
+  //     if (image.id === mainImage.id + 1) {
+  //       next = image;
+  //     }
+  //   });
+  //   return this.setState({
+  //     mainImage: next,
+  //   });
+  // }
+
   nextImage() {
-    const { images, mainImage } = this.state;
-    const lastId = images[images.length - 1].id;
-    if (mainImage.id === lastId) {
-      return this.setState({
-        mainImage: images[0],
-      });
-    }
-    let next;
-    images.forEach((image) => {
-      if (image.id === mainImage.id + 1) {
-        next = image;
-      }
-    });
+    const { images, mainImageIdx } = this.state;
+    nextIdx = (mainImageIdx + 1) % images.length;
+    nextImage = images[nextIdx];
     return this.setState({
-      mainImage: next,
+      mainImage: nextImage,
+      mainImageIdx: nextIdx,
     });
   }
 
+  // prevImage() {
+  //   const { images, mainImage } = this.state;
+  //   const firstId = images[0].id;
+  //   if (mainImage.id === firstId) {
+  //     return this.setState({
+  //       mainImage: images[images.length - 1],
+  //     });
+  //   }
+  //   let next;
+  //   images.forEach((image) => {
+  //     if (image.id === mainImage.id - 1) {
+  //       next = image;
+  //     }
+  //   });
+  //   return this.setState({
+  //     mainImage: next,
+  //   });
+  // }
+
   prevImage() {
-    const { images, mainImage } = this.state;
-    const firstId = images[0].id;
-    if (mainImage.id === firstId) {
-      return this.setState({
-        mainImage: images[images.length - 1],
-      });
-    }
-    let next;
-    images.forEach((image) => {
-      if (image.id === mainImage.id - 1) {
-        next = image;
-      }
-    });
+    const { images, mainImageIdx } = this.state;
+    prevIdx = (mainImageIdx - 1) % images.length;
+    prevImage = images[prevIdx];
     return this.setState({
-      mainImage: next,
+      mainImage: prevImage,
+      mainImageIdx: prevIdx,
     });
   }
 
