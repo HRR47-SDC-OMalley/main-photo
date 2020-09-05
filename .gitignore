@@ -30,5 +30,10 @@ aws-access.json
 # Pexels config
 pexels.config.js
 
-# data file
+# data files
 db/data.csv
+db/test_data.csv
+db/*.csv
+
+# dotenv files
+*.env
