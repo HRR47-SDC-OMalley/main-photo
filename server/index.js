@@ -16,59 +16,58 @@ app.use('/item/:id', express.static(path.resolve(__dirname, './../public/dist'))
 
 //Create
 app.post('*/photo/api/item/:id', (req, res) => {
-  const itemId = req.params.id;
-  db.getNextImageId(itemId)
-    .then((id) => {
-      return db.createListingImage({
-        url: req.body.url,
-        listing_id: itemId,
-        id: id,
-      });
-    })
+  const listingId = req.params.id;
+  const url = req.body.data.url;
+  db.createListingImage(listingId, url)
     .then((data) => {
-      res.status(200).send(data);
+      res.status(200).json(data);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(400);
+    })
 });
 
 //Read
 app.get('*/photo/api/item/:id', (req, res) => {
-  const itemId = req.params.id;
-  db.retrieveListingImages(itemId, (results) => {
-    res.status(200).json(results);
-  });
+  const listingId = req.params.id;
+  db.retrieveListingImages(listingId)
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(400);
+    })
 });
 
 // //Update
 app.put('*/photo/api/item/:id', (req, res) => {
-  const productId = req.params.id;
-  const imageId = req.body.id;
-  const imageData = {
-    url: req.body.url
-  }
-  db.getHashFromId(productId, imageId)
-    .then((hashId) => {
-      return db.updateListingImages(hashId, imageData)
-    })
+  const listingId = req.params.id;
+  const imageId = req.body.data.iid;
+  const url = req.body.data.url;
+  db.updateListingImage(listingId, imageId, url)
     .then((data) => {
       res.status(200).json(data);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(400);
+    });
 });
 
 //Delete
 app.delete('*/photo/api/item/:id', (req, res) => {
-  const productId = req.params.id;
-  const imageId = req.body.id;
-  console.log('DELETE');
-  db.getHashFromId(productId, imageId)
-    .then((hashId) => {
-      return db.deleteListingImage(hashId)
-    })
+  const listingId = req.params.id;
+  const imageId = req.body.data.iid;
+  db.deleteListingImage(listingId, imageId)
     .then((data) => {
       res.status(200).json(data);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(400);
+    })
 });
 
 const port = process.env.PORT || 3001;
