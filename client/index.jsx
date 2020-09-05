@@ -60,8 +60,8 @@ class MainPhoto extends React.Component {
 
   nextImage() {
     const { images, mainImageIdx } = this.state;
-    nextIdx = (mainImageIdx + 1) % images.length;
-    nextImage = images[nextIdx];
+    const nextIdx = (mainImageIdx + 1) % images.length;
+    const nextImage = images[nextIdx];
     return this.setState({
       mainImage: nextImage,
       mainImageIdx: nextIdx,
@@ -89,8 +89,8 @@ class MainPhoto extends React.Component {
 
   prevImage() {
     const { images, mainImageIdx } = this.state;
-    prevIdx = (mainImageIdx - 1) % images.length;
-    prevImage = images[prevIdx];
+    const prevIdx = (mainImageIdx - 1) % images.length;
+    const prevImage = images[prevIdx];
     return this.setState({
       mainImage: prevImage,
       mainImageIdx: prevIdx,
