@@ -39,25 +39,6 @@ class MainPhoto extends React.Component {
     });
   }
 
-  // nextImage() {
-  //   const { images, mainImage } = this.state;
-  //   const lastId = images[images.length - 1].id;
-  //   if (mainImage.id === lastId) {
-  //     return this.setState({
-  //       mainImage: images[0],
-  //     });
-  //   }
-  //   let next;
-  //   images.forEach((image) => {
-  //     if (image.id === mainImage.id + 1) {
-  //       next = image;
-  //     }
-  //   });
-  //   return this.setState({
-  //     mainImage: next,
-  //   });
-  // }
-
   nextImage() {
     const { images, mainImageIdx } = this.state;
     const nextIdx = (mainImageIdx + 1) % images.length;
@@ -68,28 +49,11 @@ class MainPhoto extends React.Component {
     });
   }
 
-  // prevImage() {
-  //   const { images, mainImage } = this.state;
-  //   const firstId = images[0].id;
-  //   if (mainImage.id === firstId) {
-  //     return this.setState({
-  //       mainImage: images[images.length - 1],
-  //     });
-  //   }
-  //   let next;
-  //   images.forEach((image) => {
-  //     if (image.id === mainImage.id - 1) {
-  //       next = image;
-  //     }
-  //   });
-  //   return this.setState({
-  //     mainImage: next,
-  //   });
-  // }
-
   prevImage() {
     const { images, mainImageIdx } = this.state;
-    const prevIdx = (mainImageIdx - 1) % images.length;
+    let prevIdx = mainImageIdx - 1;
+    prevIdx = prevIdx < 0 ? prevIdx + images.length : prevIdx;
+    prevIdx = prevIdx % images.length;
     const prevImage = images[prevIdx];
     return this.setState({
       mainImage: prevImage,

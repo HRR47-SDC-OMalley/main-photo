@@ -9,7 +9,6 @@
   },
   "scripts": {
     "start": "node -r dotenv/config server/index.js",
-    "seed": "node db/seeding.js",
     "start:dev": "nodemon server/index.js",
     "build": "webpack --mode production",
     "build:dev": "webpack -d --watch",
