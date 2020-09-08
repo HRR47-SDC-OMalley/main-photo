@@ -5,16 +5,6 @@ const sql = postgres(DB_URL);
 
 console.log('using', DB_URL, MAIN_TABLE_NAME);
 
-//test connection
-sql`
-  select * from ${sql(MAIN_TABLE_NAME)}
-  where lid = 999;
-`.then((res) => {
-  console.log('query results', res);
-}).catch((err) => {
-  console.log('ERR', err);
-});
-
 //Create
 const createListingImage = (listingId, url) => {
   return sql`
