@@ -37,3 +37,6 @@ db/*.csv
 
 # dotenv files
 *.env
+
+# newrelic
+newrelic.js
