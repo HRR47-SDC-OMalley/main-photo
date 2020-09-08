@@ -1,0 +1,20 @@
+config:
+  target: "http://localhost:3001"
+  processor: "./randId.js"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: Warm up
+    - duration: 60
+      arrivalRate: 5
+      rampTo: 1000
+      name: Ramp up
+    - duration: 180
+      arrivalRate: 1000
+      name: High intensity
+scenarios:
+  - name: "Get product images"
+    flow:
+      - function: "randId"
+      - get:
+          url: "/photo/api/item/{{id}}"

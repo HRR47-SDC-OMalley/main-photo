@@ -50,6 +50,7 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.5",
     "jest": "^26.4.0",
+    "newrelic": "^6.13.0",
     "pexels": "^1.0.1",
     "react-test-renderer": "^16.13.1"
   }
